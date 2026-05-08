@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Innovation Research Data",
+  "description": "Research data produced by the innovation-research skill (hv-analysis methodology). Used as input for build-report.mjs to generate HTML reports.",
+  "type": "object",
+  "required": ["title", "target", "date", "definition", "timeline", "competitors", "insights"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Report title, e.g. 'AI Agent 赛道行业扫描'"
+    },
+    "target": {
+      "type": "string",
+      "description": "Research target name, e.g. 'AI Agent'"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Report date in YYYY-MM-DD format"
+    },
+    "version": {
+      "type": "string",
+      "description": "Report version, e.g. '1.0'",
+      "default": "1.0"
+    },
+    "analyst": {
+      "type": "string",
+      "description": "Analyst name or tool identifier"
+    },
+    "definition": {
+      "type": "string",
+      "description": "One-line definition of the research target"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Topic tags, e.g. ['AI', 'SaaS', '企业服务']",
+      "maxItems": 5
+    },
+    "timeline": {
+      "type": "array",
+      "description": "Vertical analysis - key milestones in chronological order",
+      "minItems": 3,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["year", "event"],
+        "properties": {
+          "year": {
+            "type": "string",
+            "description": "Year or date of the milestone"
+          },
+          "event": {
+            "type": "string",
+            "description": "Short title of the milestone"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detail of what happened and why it matters"
+          }
+        }
+      }
+    },
+    "competitors": {
+      "type": "array",
+      "description": "Horizontal analysis - main players in the space",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": ["name", "positioning", "differentiation"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Company or product name"
+          },
+          "positioning": {
+            "type": "string",
+            "description": "One-line positioning or tagline"
+          },
+          "differentiation": {
+            "type": "string",
+            "description": "Core differentiator or competitive advantage"
+          },
+          "strength": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5,
+            "description": "Overall strength rating (1-5)"
+          }
+        }
+      }
+    },
+    "insights": {
+      "type": "object",
+      "required": ["opportunity", "risk", "entryPoint"],
+      "properties": {
+        "opportunity": {
+          "type": "array",
+          "description": "Key opportunities identified",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "risk": {
+          "type": "array",
+          "description": "Key risks identified",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "entryPoint": {
+          "type": "object",
+          "description": "Recommended entry point for innovation",
+          "required": ["description", "actions"],
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Why this entry point and what it looks like"
+            },
+            "actions": {
+              "type": "array",
+              "description": "Concrete next steps",
+              "items": { "type": "string" },
+              "minItems": 1,
+              "maxItems": 5
+            }
+          }
+        }
+      }
+    },
+    "dataCutoffDate": {
+      "type": "string",
+      "description": "Date until which data is current, if different from report date"
+    }
+  }
+}

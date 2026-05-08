@@ -1,0 +1,11 @@
+{
+  "name": "innovation-brainstorm-companion",
+  "version": "1.0.0",
+  "description": "创新脚手架 - 创意孵化实时展示",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.21.0",
+    "ws": "^8.18.0",
+    "chokidar": "^4.0.0"
+  }
+}

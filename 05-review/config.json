@@ -1,0 +1,30 @@
+{
+  "personas": [
+    { "id": "buffett", "name": "Warren Buffett", "initial": "B", "cssClass": "b", "file": "personas/buffett.md", "dimension": "商业价值", "title": "价值投资之父 · 商业价值视角" },
+    { "id": "musk", "name": "Elon Musk", "initial": "M", "cssClass": "m", "file": "personas/musk.md", "dimension": "技术可行性", "title": "第一性原理 · 技术可行性视角" },
+    { "id": "naval", "name": "Naval Ravikant", "initial": "N", "cssClass": "n", "file": "personas/naval.md", "dimension": "可扩展性", "title": "杠杆思维 · 可扩展性视角" },
+    { "id": "karpathy", "name": "Andrej Karpathy", "initial": "K", "cssClass": "k", "file": "personas/karpathy.md", "dimension": "AI适配度", "title": "AI 布道师 · AI适配度视角" }
+  ],
+  "dimensions": ["商业价值", "技术可行性", "可扩展性", "AI适配度"],
+  "scoring": { "min": 0, "max": 10, "passThreshold": 7, "warnThreshold": 5 },
+  "brand": {
+    "primary": "#023894",
+    "secondary": "#01B2B3",
+    "background": "#f8f9fa",
+    "cardBg": "#ffffff",
+    "fontStack": "\"PingFang SC\", \"Microsoft YaHei\", -apple-system, sans-serif"
+  },
+  "output": {
+    "template": "templates/review-template.html",
+    "filenamePattern": "review-{projectName}.html",
+    "encoding": "utf-8"
+  },
+  "radarChart": {
+    "cx": 0,
+    "cy": 0,
+    "radius": 80,
+    "viewBox": "-110 -110 220 220",
+    "width": 220,
+    "height": 220
+  }
+}

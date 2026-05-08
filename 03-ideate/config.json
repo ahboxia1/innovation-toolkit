@@ -1,0 +1,37 @@
+{
+  "module": "03-proposal",
+  "version": "1.0.0",
+  "description": "创新立项一页纸工具包",
+
+  "requiredFields": [
+    "一句话定义",
+    "问题",
+    "方案",
+    "商业模式过滤",
+    "目标用户",
+    "需要什么",
+    "第一步"
+  ],
+
+  "benfenCheck": {
+    "enabled": true,
+    "questions": [
+      "方案是在解决真问题，还是在找问题来配方案？",
+      "如果这个项目失败了，最大的风险是什么？",
+      "有没有"不该做但为了创新而做"的部分？"
+    ],
+    "autoBlock": true
+  },
+
+  "output": {
+    "format": "markdown",
+    "template": "default",
+    "maxParagraphLength": 150,
+    "requireQuantification": ["商业模式过滤.价值"]
+  },
+
+  "validation": {
+    "script": "scripts/validate-proposal.mjs",
+    "templateFile": "scripts/proposal-template.json"
+  }
+}

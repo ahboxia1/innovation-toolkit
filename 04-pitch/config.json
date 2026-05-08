@@ -1,0 +1,34 @@
+{
+  "defaultStyle": "tech",
+  "styles": {
+    "tech": {
+      "name": "科技风格",
+      "description": "深色渐变背景、动态光效、现代感强",
+      "background": "linear-gradient(135deg, #023894 0%, #0145c6 40%, #01B2B3 100%)",
+      "suitableFor": "技术展示、创新大赛、内部黑客松"
+    },
+    "business": {
+      "name": "商务风格",
+      "description": "蓝白色系、数据图表清晰、正式稳重",
+      "background": "#f0f4f8",
+      "suitableFor": "正式评审、高层汇报、立项答辩"
+    },
+    "minimal": {
+      "name": "极简风格",
+      "description": "白底大字、大量留白、信息聚焦",
+      "background": "#ffffff",
+      "suitableFor": "电梯演讲、快速汇报、一页纸展示"
+    }
+  },
+  "brand": {
+    "primary": "#023894",
+    "accent": "#01B2B3",
+    "accentLight": "#01e0e1",
+    "font": "PingFang SC, Microsoft YaHei, Helvetica Neue, sans-serif"
+  },
+  "output": {
+    "template": "templates/pitch-template.html",
+    "defaultFilename": "pitch-{projectName}.html",
+    "encoding": "utf-8"
+  }
+}

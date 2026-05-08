@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{PROJECT_NAME}} - 立项一页纸</title>
+<style>
+:root {
+  --primary: #023894;
+  --accent: #01B2B3;
+  --bg: #f8f9fc;
+  --text: #1a1a2e;
+  --text-light: #6b7280;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 16px rgba(2,56,148,.06);
+  --radius: 12px;
+  --font: "PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--font);color:var(--text);background:var(--bg);
+  min-height:100vh;padding:40px 20px;line-height:1.8;
+}
+
+.page{
+  max-width:860px;margin:0 auto;
+  background:var(--card-bg);border-radius:var(--radius);
+  box-shadow:var(--card-shadow);overflow:hidden;
+  opacity:0;animation:pageIn .5s ease .1s forwards;
+}
+@keyframes pageIn{to{opacity:1}}
+
+/* ---- TOP BAR ---- */
+.top-bar{
+  background:linear-gradient(135deg,#023894,#0145c6 50%,#01B2B3);
+  color:#fff;padding:32px 40px;position:relative;overflow:hidden;
+}
+.top-bar::after{
+  content:'';position:absolute;top:-30%;right:-10%;width:40%;height:140%;
+  background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 60%);
+  pointer-events:none;
+}
+.top-bar .org{
+  font-size:12px;letter-spacing:2px;opacity:.7;margin-bottom:12px;
+  text-transform:uppercase;position:relative;
+}
+.top-bar h1{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:800;position:relative}
+.top-bar .tagline{
+  font-size:.95rem;opacity:.85;margin-top:8px;max-width:600px;position:relative;
+}
+
+/* ---- META ROW ---- */
+.meta-row{
+  display:flex;gap:0;border-bottom:1px solid #eef0f4;
+  font-size:.85rem;overflow-x:auto;
+}
+.meta-item{
+  flex:1;padding:14px 20px;border-right:1px solid #eef0f4;min-width:120px;
+}
+.meta-item:last-child{border-right:none}
+.meta-item .label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.meta-item .value{color:var(--text);font-weight:600}
+
+/* ---- CONTENT ---- */
+.content{padding:32px 40px}
+
+.section{margin-bottom:28px;opacity:0;transform:translateY(12px);animation:secIn .4s ease forwards}
+.section:nth-child(1){animation-delay:.2s}
+.section:nth-child(2){animation-delay:.3s}
+.section:nth-child(3){animation-delay:.4s}
+.section:nth-child(4){animation-delay:.5s}
+.section:nth-child(5){animation-delay:.6s}
+.section:nth-child(6){animation-delay:.7s}
+.section:nth-child(7){animation-delay:.8s}
+.section:nth-child(8){animation-delay:.9s}
+@keyframes secIn{to{opacity:1;transform:translateY(0)}}
+
+.sec-header{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.sec-num{
+  width:28px;height:28px;border-radius:8px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:#fff;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.sec-title{font-size:1rem;font-weight:700;color:var(--primary)}
+.sec-body{padding-left:38px;color:#374151;font-size:.93rem}
+.sec-body ul{margin:4px 0;padding-left:1.2em}
+.sec-body li{margin-bottom:4px}
+.sec-body strong{color:var(--text)}
+
+/* ---- BENFEN CHECK ---- */
+.benfen{
+  margin-top:32px;padding:24px 28px;
+  background:linear-gradient(135deg,rgba(2,56,148,.03),rgba(1,178,179,.05));
+  border:1px dashed rgba(1,178,179,.25);border-radius:var(--radius);
+}
+.benfen .sec-header .sec-title{color:var(--accent)}
+.benfen .check-item{
+  padding:6px 0 6px 20px;position:relative;font-size:.9rem;color:#4b5563;
+}
+.benfen .check-item::before{
+  content:'';position:absolute;left:0;top:13px;width:8px;height:8px;
+  border-radius:50%;background:var(--accent);
+}
+
+/* ---- FOOTER ---- */
+.footer{
+  padding:16px 40px;border-top:1px solid #eef0f4;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.8rem;color:var(--text-light);
+}
+.footer .step-tag{
+  padding:4px 12px;background:rgba(2,56,148,.06);color:var(--primary);
+  border-radius:6px;font-weight:600;font-size:.8rem;
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:600px){
+  body{padding:16px 8px}
+  .top-bar{padding:24px}
+  .content{padding:24px}
+  .meta-row{flex-direction:column}
+  .meta-item{border-right:none;border-bottom:1px solid #eef0f4}
+  .meta-item:last-child{border-bottom:none}
+  .footer{padding:12px 20px}
+}
+
+/* ---- PRINT ---- */
+@media print{
+  body{padding:0;background:#fff}
+  .page{box-shadow:none;animation:none;opacity:1}
+  .section{animation:none;opacity:1;transform:none}
+  .top-bar{background:var(--primary) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="org">{{ORG_NAME}}</div>
+    <h1>{{PROJECT_NAME}}</h1>
+    <div class="tagline">{{TAGLINE}}</div>
+  </div>
+
+  <!-- META ROW -->
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="label">Type</div>
+      <div class="value">{{TEMPLATE_TYPE}}</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Team</div>
+      <div class="value">{{TEAM}}</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Budget</div>
+      <div class="value">{{BUDGET}}</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Cycle</div>
+      <div class="value">{{CYCLE}}</div>
+    </div>
+  </div>
+
+  <!-- CONTENT SECTIONS -->
+  <div class="content">
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">1</div><div class="sec-title">{{SEC_1_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_1_BODY}}</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">2</div><div class="sec-title">{{SEC_2_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_2_BODY}}</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">3</div><div class="sec-title">{{SEC_3_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_3_BODY}}</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">4</div><div class="sec-title">{{SEC_4_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_4_BODY}}</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">5</div><div class="sec-title">{{SEC_5_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_5_BODY}}</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">6</div><div class="sec-title">{{SEC_6_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_6_BODY}}</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">7</div><div class="sec-title">{{SEC_7_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_7_BODY}}</div>
+    </div>
+
+    <!-- SEC_8 optional: 千丁 template has 8 items -->
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">8</div><div class="sec-title">{{SEC_8_TITLE}}</div></div>
+      <div class="sec-body">{{SEC_8_BODY}}</div>
+    </div>
+
+    <!-- BENFEN CHECK -->
+    <div class="benfen">
+      <div class="sec-header"><div class="sec-num" style="background:var(--accent)">?</div><div class="sec-title">本分检查</div></div>
+      <div class="check-item">{{BENFEN_1}}</div>
+      <div class="check-item">{{BENFEN_2}}</div>
+      <div class="check-item">{{BENFEN_3}}</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="step-tag">Step 3 / 5</span>
+    <span>{{DATE}}</span>
+  </div>
+</div>
+
+</body>
+</html>

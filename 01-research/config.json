@@ -1,0 +1,36 @@
+{
+  "output": {
+    "format": "html",
+    "formats": ["html", "markdown"],
+    "encoding": "utf-8"
+  },
+  "limits": {
+    "maxCompetitors": 6,
+    "maxTimelineEvents": 8,
+    "maxInsightPoints": 5,
+    "maxTags": 5
+  },
+  "brand": {
+    "primary": "#023894",
+    "accent": "#01B2B3",
+    "company": "千丁数科"
+  },
+  "research": {
+    "language": "zh",
+    "dataCutoffNote": "数据截至报告日期，未标注来源的数据为公开信息汇总",
+    "sources": {
+      "primary": ["官方博客", "GitHub", "创始人公开言论", "SEC/工商文件"],
+      "secondary": ["36氪", "晚点LatePost", "虎嗅", "极客公园"],
+      "community": ["知乎", "Reddit", "GitHub Issues", "V2EX"]
+    }
+  },
+  "template": {
+    "path": "templates/research-template.html",
+    "placeholderPattern": "{{KEY}}"
+  },
+  "scripts": {
+    "buildReport": "scripts/build-report.mjs",
+    "quickResearch": "scripts/quick-research.mjs",
+    "spider": "spider.mjs"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InnovationReview",
+  "description": "AI创新预审报告的数据结构",
+  "type": "object",
+  "required": ["projectName", "date", "avgScore", "dimensions", "reviewers", "topIssues", "nextSteps"],
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "项目名称"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "评审日期 YYYY-MM-DD"
+    },
+    "avgScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "四维综合均分"
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "score"],
+        "properties": {
+          "name": { "type": "string", "description": "维度名称" },
+          "score": { "type": "number", "minimum": 0, "maximum": 10 }
+        }
+      },
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "四个评分维度及分数"
+    },
+    "reviewers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "initial", "color", "dimension", "verdict", "review", "advice"],
+        "properties": {
+          "name": { "type": "string" },
+          "initial": { "type": "string", "enum": ["B", "M", "N", "K"] },
+          "color": { "type": "string", "description": "CSS class: b|m|n|k" },
+          "dimension": { "type": "string", "description": "评审维度" },
+          "verdict": { "type": "string", "enum": ["pass", "warn", "fail"] },
+          "review": { "type": "string", "description": "200-400字评审意见" },
+          "advice": { "type": "string", "description": "一句话忠告" }
+        }
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "topIssues": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "最关键的3个待改进点"
+    },
+    "nextSteps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "下一步行动建议"
+    }
+  }
+}

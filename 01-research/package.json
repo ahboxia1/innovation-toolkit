@@ -1,0 +1,9 @@
+{
+  "name": "innovation-research-tools",
+  "version": "1.0.0",
+  "description": "创新行业研究工具 - 网页爬取脚本",
+  "type": "module",
+  "dependencies": {
+    "playwright": "^1.52.0"
+  }
+}

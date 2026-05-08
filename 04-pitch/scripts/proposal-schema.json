@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "创新提案数据",
+  "description": "03-proposal 模块产出的立项数据，供 04-pitch 模块生成路演页面使用",
+  "type": "object",
+  "required": ["projectName", "painPoint", "oneLineSolution", "targetUser", "problem", "solution", "mvpPlan"],
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "项目名称，如「AI会议纪要助手」"
+    },
+    "painPoint": {
+      "type": "string",
+      "description": "一句话描述核心痛点，用于路演开场冲击"
+    },
+    "oneLineSolution": {
+      "type": "string",
+      "description": "一句话方案概述"
+    },
+    "targetUser": {
+      "type": "object",
+      "description": "目标用户画像",
+      "properties": {
+        "name": { "type": "string", "description": "用户角色名称，如「会议召集人」「项目经理」" },
+        "description": { "type": "string", "description": "用户画像描述" }
+      },
+      "required": ["name", "description"]
+    },
+    "problem": {
+      "type": "object",
+      "description": "问题深挖",
+      "properties": {
+        "context": { "type": "string", "description": "问题背景描述" },
+        "pains": {
+          "type": "array",
+          "description": "痛点数据卡片（最多3个）",
+          "items": {
+            "type": "object",
+            "properties": {
+              "data": { "type": "string", "description": "核心数据，如「70%」「3h」" },
+              "unit": { "type": "string", "description": "数据单位/说明" },
+              "title": { "type": "string", "description": "痛点标题" },
+              "detail": { "type": "string", "description": "痛点详细描述" }
+            },
+            "required": ["data", "title"]
+          },
+          "maxItems": 3
+        }
+      },
+      "required": ["context"]
+    },
+    "solution": {
+      "type": "object",
+      "description": "方案详情",
+      "properties": {
+        "points": {
+          "type": "array",
+          "description": "核心方案要点（3个）",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string", "description": "要点标题" },
+              "desc": { "type": "string", "description": "要点描述" }
+            },
+            "required": ["title", "desc"]
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": ["points"]
+    },
+    "differentiation": {
+      "type": "string",
+      "description": "与现有方案的差异化优势"
+    },
+    "businessModel": {
+      "type": "string",
+      "description": "商业模式/价值实现路径"
+    },
+    "tenYearTest": {
+      "type": "string",
+      "description": "十年测试：这个问题十年后还存在吗？为什么值得现在解决？"
+    },
+    "moat": {
+      "type": "string",
+      "description": "护城河/竞争壁垒"
+    },
+    "firstUsers": {
+      "type": "string",
+      "description": "种子用户获取策略"
+    },
+    "scale": {
+      "type": "object",
+      "description": "规模与价值量化",
+      "properties": {
+        "users": { "type": "string", "description": "目标用户规模，如「2000+员工」" },
+        "efficiency": { "type": "string", "description": "效率提升量化，如「80%」" },
+        "savings": { "type": "string", "description": "成本节省量化，如「50万/年」" }
+      }
+    },
+    "resourcesNeeded": {
+      "type": "string",
+      "description": "所需资源（人力、预算、技术等）"
+    },
+    "mvpPlan": {
+      "type": "array",
+      "description": "MVP落地节奏（4个阶段）",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phase": { "type": "string", "description": "阶段名称" },
+          "desc": { "type": "string", "description": "阶段描述" }
+        },
+        "required": ["phase", "desc"]
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "mvpTimeline": {
+      "type": "string",
+      "description": "MVP总时间线描述，如「8周内完成MVP上线」"
+    }
+  }
+}

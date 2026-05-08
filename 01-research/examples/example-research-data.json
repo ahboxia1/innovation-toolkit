@@ -1,0 +1,105 @@
+{
+  "title": "AI Agent 赛道行业扫描",
+  "target": "AI Agent",
+  "date": "2026-05-08",
+  "version": "1.0",
+  "analyst": "Innovation Toolkit",
+  "definition": "AI Agent 是能够自主感知环境、制定计划、调用工具并执行多步骤任务以达成目标的智能体系统，区别于单轮对话的 Chatbot，核心特征是自主决策与行动力。",
+  "tags": ["AI Agent", "自动化", "企业服务", "大模型应用"],
+
+  "timeline": [
+    {
+      "year": "2023.03",
+      "event": "AutoGPT 爆火",
+      "description": "开源项目 AutoGPT 在 GitHub 上迅速获得超过 10 万星标，首次让大众看到 AI 自主规划+执行的潜力。但实际表现受限于幻觉和工具调用不稳定。"
+    },
+    {
+      "year": "2023.06",
+      "event": "LangChain / LlamaIndex 生态成型",
+      "description": "Agent 开发框架走向标准化，Chain/Tool/Memory 等抽象层确立。大量开发者涌入，但框架碎片化问题开始显现。"
+    },
+    {
+      "year": "2024.01",
+      "event": "OpenAI 发布 Assistants API",
+      "description": "官方下场提供代码解释器、文件检索、函数调用等 Agent 能力的托管服务，标志着 Agent 从实验走向工程化。"
+    },
+    {
+      "year": "2024.10",
+      "event": "Claude 发布 Computer Use",
+      "description": "Anthropic 的 Claude 可以直接操作桌面 GUI，Agent 从 API 调用扩展到全界面操控，应用场景大幅拓宽。"
+    },
+    {
+      "year": "2025.03",
+      "event": "MCP 协议成为事实标准",
+      "description": "Model Context Protocol 被主流大模型厂商采纳，Agent 的工具调用有了统一协议，生态互操作性问题的到根本性改善。"
+    },
+    {
+      "year": "2025.09",
+      "event": "企业级 Agent 平台爆发",
+      "description": "Salesforce Agentforce、微软 Copilot Studio、字节 Coze 等企业级 Agent 平台密集发布，B 端采用率快速上升。Agent 从「技术实验」变成「业务工具」。"
+    },
+    {
+      "year": "2026.Q1",
+      "event": "Multi-Agent 协作成为主流范式",
+      "description": "多 Agent 编排框架（CrewAI、LangGraph、Anthropic Agent SDK）成熟，复杂任务拆解为多 Agent 协作成为行业共识。"
+    }
+  ],
+
+  "competitors": [
+    {
+      "name": "OpenAI (Assistants / Agents SDK)",
+      "positioning": "最强模型能力 + 开发者生态",
+      "differentiation": "GPT 系列模型能力领先，Assistants API 提供开箱即用的 Agent 托管，Agents SDK 支持多 Agent 编排。护城河在于模型质量和 API 易用性。",
+      "strength": 5
+    },
+    {
+      "name": "Anthropic (Claude / Agent SDK)",
+      "positioning": "安全可控的企业级 Agent",
+      "differentiation": "在长上下文理解、代码生成和安全性上口碑突出。MCP 协议发起方，Computer Use 能力独特。企业客户信任度高。",
+      "strength": 4
+    },
+    {
+      "name": "字节跳动 (Coze / 扣子)",
+      "positioning": "零代码 Agent 构建平台",
+      "differentiation": "拖拽式搭建，内置插件生态丰富，面向非技术用户。国内市场渗透快，海外版 Coze 也在扩张。门槛最低，但深度定制能力有限。",
+      "strength": 4
+    },
+    {
+      "name": "微软 (Copilot Studio)",
+      "positioning": "企业 Office 全家桶 Agent 化",
+      "differentiation": "与 M365 深度集成，企业客户有现成的采购路径。优势在于分发渠道而非技术领先，但对企业用户来说部署成本最低。",
+      "strength": 5
+    },
+    {
+      "name": "Google (Vertex AI Agent Builder)",
+      "positioning": "云原生 + 搜索能力加持",
+      "differentiation": "结合 Gemini 模型和 Google 搜索索引，在信息检索型 Agent 上有天然优势。但开发者体验和社区活跃度落后于 OpenAI/Anthropic。",
+      "strength": 3
+    }
+  ],
+
+  "insights": {
+    "opportunity": [
+      "垂直场景 Agent（招聘、客服、财务）还没有形成头部垄断，细分赛道存在差异化切入空间",
+      "Multi-Agent 编排需求爆发，但编排工具链仍不成熟，做中间层工具有机会",
+      "企业内部 Agent 的安全合规需求强烈，安全审计类 Agent 是增量市场",
+      "Agent 的评测和监控工具（质量、成本、延迟）是刚需但供给不足"
+    ],
+    "risk": [
+      "大模型厂商持续向下整合 Agent 能力，纯 Agent 平台有被「平台化」的风险",
+      "Agent 的可靠性（幻觉、死循环、误操作）在 B 端场景下仍是硬伤，客户容忍度低",
+      "MCP 等协议虽在统一，但各厂商的 Agent 生态仍是封闭的，跨平台互操作性短期内有限",
+      "企业数据安全和隐私合规是落地最大卡点，尤其在金融、医疗等强监管行业"
+    ],
+    "entryPoint": {
+      "description": "建议从「垂直场景的轻量 Agent 工具」切入——不做通用平台，而是针对 HR、客服、运营等具体场景，做一个能用起来的单点工具。先证明价值，再扩展边界。",
+      "actions": [
+        "选 1-2 个高频重复性工作场景（如简历筛选、周报生成），做 Agent MVP 验证",
+        "用现成框架（Claude Agent SDK / LangGraph）快速搭建，不自研底层",
+        "优先解决可靠性问题：设定明确的成功/失败标准，加人工审核兜底"
+      ]
+    }
+  },
+
+  "dataCutoffDate": "2026-05-08"
+}
