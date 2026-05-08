@@ -297,13 +297,17 @@ innovation-toolkit/
 
 | 方法 | 来源 | 用在哪 |
 |------|------|--------|
-| 设计思维五阶段（Design Thinking） | Stanford d.school Bootleg (2018) | 整体框架 |
+| 设计思维五阶段（Design Thinking） | [Stanford d.school Bootleg (2018)](https://dschool.stanford.edu/resources) | 整体框架 |
 | POV框架（Point of View，观点陈述） | d.school Define阶段 | Step 2 |
 | HMW问题（How Might We，我们不妨怎样） | d.school Define → Ideate衔接 | Step 2 → Step 3 |
 | 发散收敛（Go Wide / Narrow In） | d.school Ideate阶段 | Step 3 |
-| 横纵分析法 | 数字生命卡兹克（MIT License） | Step 1 |
-| 段永平商业过滤器 | 雪球公开问答 | Step 3 Hard Gate（硬关卡） |
-| 四巨头人格蒸馏 | buffett/musk/naval/karpathy skill | Step 2 方向验证gate（关卡） |
+| 横纵分析法 | [数字生命卡兹克 / hv-analysis](https://github.com/KKKKhazix/khazix-skills/tree/main/hv-analysis)（MIT License） | Step 1 |
+| 段永平商业过滤器 | [段永平投资问答 / duan-yongping-skill](https://github.com/derrickgong87/duan-yongping-skill) | Step 3 Hard Gate（硬关卡） |
+| 巴菲特人格蒸馏 | [buffett-perspective](https://github.com/will2025btc/buffett-perspective) | Step 2 方向验证gate（关卡） |
+| 马斯克人格蒸馏 | [elon-musk-skill](https://github.com/alchaincyf/elon-musk-skill) | Step 2 方向验证gate（关卡） |
+| 纳瓦尔人格蒸馏 | [naval-skill](https://github.com/alchaincyf/naval-skill) | Step 2 方向验证gate（关卡） |
+| Karpathy人格蒸馏 | [karpathy-skill](https://github.com/alchaincyf/karpathy-skill) | Step 2 方向验证gate（关卡） |
+| 人物思维框架 | [花叔 / nuwa-skill](https://github.com/alchaincyf/nuwa-skill)（MIT License） | Step 2 引导逻辑 |
 
 注入了龙湖集团 / 蜂巢创新大赛的内部评审标准。
 
