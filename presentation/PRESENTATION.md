@@ -1,6 +1,6 @@
 # 创新脚手架 · Innovation Toolkit
 
-> 数科人力团队出品的AI Skill——基于Stanford d.school设计思维，帮员工从模糊想法走到能立项的一页纸。
+> 千丁与数科人力团队出品的AI Skill——基于Stanford d.school设计思维，帮员工从模糊想法走到能立项的一页纸。
 
 ---
 
