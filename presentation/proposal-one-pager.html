@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamPulse - 立项一页纸</title>
+<style>
+:root {
+  --primary: #023894;
+  --accent: #01B2B3;
+  --bg: #f8f9fc;
+  --text: #1a1a2e;
+  --text-light: #6b7280;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 16px rgba(2,56,148,.06);
+  --radius: 12px;
+  --font: "PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--font);color:var(--text);background:var(--bg);
+  min-height:100vh;padding:40px 20px;line-height:1.8;
+}
+
+.page{
+  max-width:860px;margin:0 auto;
+  background:var(--card-bg);border-radius:var(--radius);
+  box-shadow:var(--card-shadow);overflow:hidden;
+  opacity:0;animation:pageIn .5s ease .1s forwards;
+}
+@keyframes pageIn{to{opacity:1}}
+
+/* ---- TOP BAR ---- */
+.top-bar{
+  background:linear-gradient(135deg,#023894,#0145c6 50%,#01B2B3);
+  color:#fff;padding:32px 40px;position:relative;overflow:hidden;
+}
+.top-bar::after{
+  content:'';position:absolute;top:-30%;right:-10%;width:40%;height:140%;
+  background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 60%);
+  pointer-events:none;
+}
+.top-bar .org{
+  font-size:12px;letter-spacing:2px;opacity:.7;margin-bottom:12px;
+  text-transform:uppercase;position:relative;
+}
+.top-bar h1{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:800;position:relative}
+.top-bar .tagline{
+  font-size:.95rem;opacity:.85;margin-top:8px;max-width:600px;position:relative;
+}
+
+/* ---- META ROW ---- */
+.meta-row{
+  display:flex;gap:0;border-bottom:1px solid #eef0f4;
+  font-size:.85rem;overflow-x:auto;
+}
+.meta-item{
+  flex:1;padding:14px 20px;border-right:1px solid #eef0f4;min-width:120px;
+}
+.meta-item:last-child{border-right:none}
+.meta-item .label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.meta-item .value{color:var(--text);font-weight:600}
+
+/* ---- CONTENT ---- */
+.content{padding:32px 40px}
+
+.section{margin-bottom:28px;opacity:0;transform:translateY(12px);animation:secIn .4s ease forwards}
+.section:nth-child(1){animation-delay:.2s}
+.section:nth-child(2){animation-delay:.3s}
+.section:nth-child(3){animation-delay:.4s}
+.section:nth-child(4){animation-delay:.5s}
+.section:nth-child(5){animation-delay:.6s}
+.section:nth-child(6){animation-delay:.7s}
+.section:nth-child(7){animation-delay:.8s}
+.section:nth-child(8){animation-delay:.9s}
+@keyframes secIn{to{opacity:1;transform:translateY(0)}}
+
+.sec-header{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.sec-num{
+  width:28px;height:28px;border-radius:8px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:#fff;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.sec-title{font-size:1rem;font-weight:700;color:var(--primary)}
+.sec-body{padding-left:38px;color:#374151;font-size:.93rem}
+.sec-body ul{margin:4px 0;padding-left:1.2em}
+.sec-body li{margin-bottom:4px}
+.sec-body strong{color:var(--text)}
+
+/* ---- BENFEN CHECK ---- */
+.benfen{
+  margin-top:32px;padding:24px 28px;
+  background:linear-gradient(135deg,rgba(2,56,148,.03),rgba(1,178,179,.05));
+  border:1px dashed rgba(1,178,179,.25);border-radius:var(--radius);
+}
+.benfen .sec-header .sec-title{color:var(--accent)}
+.benfen .check-item{
+  padding:6px 0 6px 20px;position:relative;font-size:.9rem;color:#4b5563;
+}
+.benfen .check-item::before{
+  content:'';position:absolute;left:0;top:13px;width:8px;height:8px;
+  border-radius:50%;background:var(--accent);
+}
+
+/* ---- FOOTER ---- */
+.footer{
+  padding:16px 40px;border-top:1px solid #eef0f4;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.8rem;color:var(--text-light);
+}
+.footer .step-tag{
+  padding:4px 12px;background:rgba(2,56,148,.06);color:var(--primary);
+  border-radius:6px;font-weight:600;font-size:.8rem;
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:600px){
+  body{padding:16px 8px}
+  .top-bar{padding:24px}
+  .content{padding:24px}
+  .meta-row{flex-direction:column}
+  .meta-item{border-right:none;border-bottom:1px solid #eef0f4}
+  .meta-item:last-child{border-bottom:none}
+  .footer{padding:12px 20px}
+}
+
+/* ---- PRINT ---- */
+@media print{
+  body{padding:0;background:#fff}
+  .page{box-shadow:none;animation:none;opacity:1}
+  .section{animation:none;opacity:1;transform:none}
+  .top-bar{background:var(--primary) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="org">DT · AI季度探索项目</div>
+    <h1>TeamPulse</h1>
+    <div class="tagline">工作信息自动汇总层 — 让leader随时掌握团队进展</div>
+  </div>
+
+  <!-- META ROW -->
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="label">Type</div>
+      <div class="value">AI季度探索</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Team</div>
+      <div class="value">DT 产品团队</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Budget</div>
+      <div class="value">≤5万</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Cycle</div>
+      <div class="value">2周MVP验证</div>
+    </div>
+  </div>
+
+  <!-- CONTENT SECTIONS -->
+  <div class="content">
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">1</div><div class="sec-title">痛点描述</div></div>
+      <div class="sec-body">
+        <p>团队工作信息散落在Jira、Git、文档平台、即时通讯等多个工具中，leader每周需要花大量时间开会、看周报才能拼凑出团队进展全貌。</p>
+        <ul>
+          <li>成员每周花<strong>2小时</strong>写周报，leader每份只看<strong>30秒</strong></li>
+          <li>问题发现周期：平均<strong>5天</strong>（等下周一周报才知道）</li>
+          <li>信息是有的，但没有被<strong>连接</strong>起来</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">2</div><div class="sec-title">用户画像</div></div>
+      <div class="sec-body">
+        <p><strong>主要用户</strong>：需要了解团队进展的管理者（team leader、项目经理）</p>
+        <p><strong>次要用户</strong>：被要求写周报的中层员工（产品经理、开发等）</p>
+        <p>核心洞察：leader要的不是周报本身，而是<strong>"知道团队这周做了什么、遇到什么问题"</strong>。周报只是一种载体，且是很低效的那种。</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">3</div><div class="sec-title">解决方案</div></div>
+      <div class="sec-body">
+        <p><strong>MVP方案</strong>：每天早上自动从Jira拉取"昨天完成/昨天新增/昨天阻塞"的数据，生成一段<strong>200字摘要</strong>，推送给leader。</p>
+        <ul>
+          <li>不做实时推送，不做多工具集成</li>
+          <li>第一版只接Jira，验证核心假设</li>
+          <li>架构上做数据源抽象层，后续可扩展Git、文档平台等</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">4</div><div class="sec-title">核心价值</div></div>
+      <div class="sec-body">
+        <p><strong>量化指标</strong>：问题发现速度从"每周一次周报"变成"每天一次自动摘要"。</p>
+        <ul>
+          <li>问题发现从<strong>周级别→天级别</strong></li>
+          <li>leader平均节省<strong>3小时/周</strong>的团队进展跟踪时间</li>
+          <li>阻塞项平均发现时间从<strong>5天→1天</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">5</div><div class="sec-title">验证计划</div></div>
+      <div class="sec-body">
+        <p><strong>试点范围</strong>：先在自己团队试点，2周。</p>
+        <ul>
+          <li>指标1：leader每天打开摘要的频率（目标：连续5个工作日每天都打开）</li>
+          <li>指标2：问题平均发现时间（目标：从5天缩短到1天）</li>
+          <li>成功标准：leader连续5个工作日每天都打开摘要 = 验证通过</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">6</div><div class="sec-title">资源需求</div></div>
+      <div class="sec-body">
+        <ul>
+          <li><strong>人力</strong>：≤2人（1开发 + 1产品）</li>
+          <li><strong>技术</strong>：Claude API（摘要生成）+ Jira API（数据拉取）+ 定时任务</li>
+          <li><strong>经费</strong>：API调用费+ 云服务器，预估≤5万</li>
+          <li><strong>时间</strong>：2周完成MVP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header"><div class="sec-num">7</div><div class="sec-title">风险与应对</div></div>
+      <div class="sec-body">
+        <ul>
+          <li><strong>风险1：leader不看</strong> → 先在自己团队试点，leader自己就是受益者</li>
+          <li><strong>风险2：数据隐私</strong> → 使用聚合数据而非原始数据（展示"团队完成15个任务"而非"张三关了3个ticket"）</li>
+          <li><strong>风险3：摘要准确率不够</strong> → 限定数据源（Jira结构化数据），降低幻觉风险</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BENFEN CHECK -->
+    <div class="benfen">
+      <div class="sec-header"><div class="sec-num" style="background:var(--accent)">?</div><div class="sec-title">本分检查</div></div>
+      <div class="check-item">解决真问题？ ✅ leader确实看不到团队的实时进展</div>
+      <div class="check-item">核心价值能量化？ ✅ 问题发现从"周级别"→"天级别"</div>
+      <div class="check-item">最大风险想清楚了？ ✅ leader可能不看 → 先在自己团队试点2周验证</div>
+      <div class="check-item">有没有凑数部分？ ✅ 只做一件事：Jira每日摘要</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="step-tag">Step 3 / Ideate</span>
+    <span>2026-05-09</span>
+  </div>
+</div>
+
+</body>
+</html>

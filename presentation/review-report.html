@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamPulse - AI 创新预审报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@font-face{font-family:'sys';src:local("PingFang SC"),local("Microsoft YaHei"),local("Helvetica Neue"),local(sans-serif)}
+body{font-family:sys,-apple-system,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* ===== COVER ===== */
+.cover{background:linear-gradient(135deg,#023894 0%,#0147b8 40%,#01B2B3 100%);min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04)}
+.cover::after{content:'';position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.03)}
+.cover-label{font-size:13px;letter-spacing:6px;color:rgba(255,255,255,.55);text-transform:uppercase;margin-bottom:16px;font-weight:500}
+.cover h1{font-size:clamp(28px,5vw,44px);color:#fff;font-weight:700;text-align:center;margin-bottom:8px;position:relative;z-index:1}
+.cover h2{font-size:clamp(16px,2.5vw,20px);color:rgba(255,255,255,.7);font-weight:400;margin-bottom:40px;position:relative;z-index:1}
+.reviewers-row{display:flex;gap:20px;position:relative;z-index:1}
+.avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;border:2.5px solid rgba(255,255,255,.3);position:relative;transition:transform .3s,box-shadow .3s}
+.avatar:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.avatar.b{background:#023894}.avatar.m{background:#e04848}.avatar.n{background:#f59e0b}.avatar.k{background:#01B2B3}
+.avatar span{position:absolute;bottom:-22px;font-size:10px;color:rgba(255,255,255,.6);white-space:nowrap;letter-spacing:1px;font-weight:400}
+.cover-meta{margin-top:36px;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:1px}
+
+/* ===== CONTAINER ===== */
+.container{max-width:780px;margin:0 auto;padding:0 20px}
+
+/* ===== OVERVIEW ===== */
+.overview{margin-top:-40px;position:relative;z-index:2;margin-bottom:32px}
+.card{background:#fff;border-radius:16px;box-shadow:0 2px 16px rgba(2,56,148,.07);padding:36px;margin-bottom:24px;opacity:0;animation:fadeUp .6s ease forwards}
+.card:nth-child(1){animation-delay:.1s}.card:nth-child(2){animation-delay:.3s}.card:nth-child(3){animation-delay:.5s}.card:nth-child(4){animation-delay:.7s}.card:nth-child(5){animation-delay:.9s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.overview-inner{display:flex;align-items:center;gap:36px;flex-wrap:wrap;justify-content:center}
+.radar-wrap{flex-shrink:0}
+.radar-label{font-size:12px;fill:#8b95a5}
+.radar-value{font-size:13px;fill:#023894;font-weight:600}
+.overview-text{flex:1;min-width:240px}
+.overview-text h3{font-size:18px;color:#023894;margin-bottom:12px;font-weight:700}
+.dim-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px}
+.dim-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dim-dot.d1{background:#023894}.dim-dot.d2{background:#01B2B3}.dim-dot.d3{background:#f59e0b}.dim-dot.d4{background:#e04848}
+.dim-score{font-weight:700;color:#023894;margin-left:auto}
+
+/* ===== REVIEWER CARDS ===== */
+.section-title{font-size:14px;color:#8b95a5;letter-spacing:3px;margin-bottom:20px;text-align:center;font-weight:500}
+.reviewer-card{transition:transform .25s ease,box-shadow .25s ease;cursor:default}
+.reviewer-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(2,56,148,.1)}
+.reviewer-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.r-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;color:#fff;flex-shrink:0}
+.r-avatar.b{background:#023894}.r-avatar.m{background:#e04848}.r-avatar.n{background:#f59e0b}.r-avatar.k{background:#01B2B3}
+.r-info{flex:1}
+.r-name{font-size:16px;font-weight:700;color:#1a1a2e}
+.r-title{font-size:12px;color:#8b95a5}
+.r-dim{font-size:11px;color:#01B2B3;font-weight:600;margin-top:2px}
+.verdict{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;margin-left:auto;flex-shrink:0}
+.verdict.pass{background:#ecfdf5;color:#059669}.verdict.warn{background:#fffbeb;color:#d97706}.verdict.fail{background:#fef2f2;color:#dc2626}
+.review-body{font-size:14.5px;color:#374151;line-height:1.85;margin-bottom:16px}
+.advice{border-left:3px solid #01B2B3;background:linear-gradient(90deg,rgba(1,178,179,.05),transparent);padding:12px 16px;font-size:14px;color:#023894;font-style:italic;border-radius:0 8px 8px 0}
+.advice strong{font-style:normal;color:#01B2B3}
+
+/* ===== SUMMARY ===== */
+.summary{margin-bottom:60px}
+.summary h3{font-size:20px;margin-bottom:20px;text-align:center;font-weight:700}
+.verdict-bar{display:flex;gap:12px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.verdict-pill{padding:8px 20px;border-radius:24px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.verdict-pill.pass{background:#ecfdf5;color:#059669;border:1.5px solid #a7f3d0}
+.verdict-pill.warn{background:#fffbeb;color:#d97706;border:1.5px solid #fde68a}
+.verdict-pill.fail{background:#fef2f2;color:#dc2626;border:1.5px solid #fecaca}
+.issues-list{list-style:none;margin-bottom:24px}
+.issues-list li{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f2f5;font-size:14px}
+.issues-list li:last-child{border-bottom:none}
+.issue-num{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#023894,#01B2B3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.next-steps{background:linear-gradient(135deg,rgba(2,56,148,.04),rgba(1,178,179,.04));border-radius:12px;padding:20px 24px}
+.next-steps h4{font-size:14px;color:#023894;margin-bottom:12px;font-weight:700}
+.next-steps ol{padding-left:20px;font-size:14px;color:#374151}
+.next-steps li{margin-bottom:6px}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;padding:32px 20px;font-size:12px;color:#8b95a5;letter-spacing:1px;border-top:1px solid #e5e7eb}
+.footer span{color:#01B2B3;font-weight:600}
+
+@media(max-width:600px){
+  .overview-inner{flex-direction:column}
+  .reviewer-header{flex-wrap:wrap}
+  .verdict{margin-left:0;margin-top:8px}
+  .cover h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-label">Innovation Review Report</div>
+  <h1>TeamPulse</h1>
+  <h2>AI 创新预审报告</h2>
+  <div class="reviewers-row">
+    <div class="avatar b">B<span>Buffett</span></div>
+    <div class="avatar m">M<span>Musk</span></div>
+    <div class="avatar n">N<span>Naval</span></div>
+    <div class="avatar k">K<span>Karpathy</span></div>
+  </div>
+  <div class="cover-meta">2026-05-09 &nbsp;·&nbsp; 4 位评审 &nbsp;·&nbsp; 4 维度评估</div>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<div class="container">
+  <div class="card overview">
+    <div class="overview-inner">
+      <div class="radar-wrap">
+        <svg width="220" height="220" viewBox="-110 -110 220 220">
+          <!-- Grid circles -->
+          <circle cx="0" cy="0" r="80" fill="none" stroke="#e5e7eb" stroke-width=".7"/>
+          <circle cx="0" cy="0" r="56" fill="none" stroke="#e5e7eb" stroke-width=".5"/>
+          <circle cx="0" cy="0" r="32" fill="none" stroke="#e5e7eb" stroke-width=".5"/>
+          <circle cx="0" cy="0" r="8" fill="#023894" opacity=".15"/>
+          <!-- Axes -->
+          <line x1="0" y1="-80" x2="0" y2="80" stroke="#d1d5db" stroke-width=".5"/>
+          <line x1="-80" y1="0" x2="80" y2="0" stroke="#d1d5db" stroke-width=".5"/>
+          <line x1="-56.6" y1="-56.6" x2="56.6" y2="56.6" stroke="#d1d5db" stroke-width=".5"/>
+          <line x1="56.6" y1="-56.6" x2="-56.6" y2="56.6" stroke="#d1d5db" stroke-width=".5"/>
+          <!-- Data polygon: 商业7, 技术6, 可扩展9, AI适配7 -->
+          <polygon points="0,-56 48,0 0,72 -56,0" fill="rgba(1,178,179,.2)" stroke="#01B2B3" stroke-width="2.2" stroke-linejoin="round"/>
+          <!-- Data dots -->
+          <circle cx="0" cy="-56" r="4.5" fill="#01B2B3" stroke="#fff" stroke-width="2"/>
+          <circle cx="48" cy="0" r="4.5" fill="#01B2B3" stroke="#fff" stroke-width="2"/>
+          <circle cx="0" cy="72" r="4.5" fill="#01B2B3" stroke="#fff" stroke-width="2"/>
+          <circle cx="-56" cy="0" r="4.5" fill="#01B2B3" stroke="#fff" stroke-width="2"/>
+          <!-- Labels -->
+          <text x="0" y="-90" text-anchor="middle" class="radar-label">商业价值</text>
+          <text x="0" y="-82" text-anchor="middle" class="radar-value">7/10</text>
+          <text x="95" y="4" text-anchor="start" class="radar-label">技术可行性</text>
+          <text x="95" y="16" text-anchor="start" class="radar-value">6/10</text>
+          <text x="0" y="98" text-anchor="middle" class="radar-label">可扩展性</text>
+          <text x="0" y="108" text-anchor="middle" class="radar-value">9/10</text>
+          <text x="-95" y="4" text-anchor="end" class="radar-label">AI适配度</text>
+          <text x="-95" y="16" text-anchor="end" class="radar-value">7/10</text>
+        </svg>
+      </div>
+      <div class="overview-text">
+        <h3>综合评分：7.2 / 10</h3>
+        <div class="dim-row"><div class="dim-dot d1"></div>商业价值<div class="dim-score">7</div></div>
+        <div class="dim-row"><div class="dim-dot d2"></div>技术可行性<div class="dim-score">6</div></div>
+        <div class="dim-row"><div class="dim-dot d3"></div>可扩展性<div class="dim-score">9</div></div>
+        <div class="dim-row"><div class="dim-dot d4"></div>AI适配度<div class="dim-score">7</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REVIEWER CARDS ===== -->
+  <div class="section-title">四 大 视 角 评 审</div>
+
+  <!-- Buffett -->
+  <div class="card reviewer-card">
+    <div class="reviewer-header">
+      <div class="r-avatar b">B</div>
+      <div class="r-info">
+        <div class="r-name">Warren Buffett</div>
+        <div class="r-title">价值投资之父 · 商业价值视角</div>
+        <div class="r-dim">维度：商业价值</div>
+      </div>
+      <div class="verdict warn">✅ 有保留</div>
+    </div>
+    <div class="review-body">你们的护城河是"和内部工具深度绑定"——Jira、文档平台、Git，这些数据只有内部的人能拿到。但我要问：你离开了这个公司，这套东西还能用吗？如果不能，那它不是一个可迁移的产品，只是一个内部工具。当然，内部工具也有价值，只是别把它包装成"平台"。<br><br>另外注意：你的MVP只接了Jira。如果Jira有一天被换掉了呢？建议架构上做一层抽象，后面接Git也好接文档平台也好，换成本低。</div>
+    <blockquote class="advice"><strong>Buffett 金句：</strong>护城河深是好事，但也别把自己锁在城里。</blockquote>
+  </div>
+
+  <!-- Musk -->
+  <div class="card reviewer-card">
+    <div class="reviewer-header">
+      <div class="r-avatar m">M</div>
+      <div class="r-info">
+        <div class="r-name">Elon Musk</div>
+        <div class="r-title">第一性原理 · 技术可行性视角</div>
+        <div class="r-dim">维度：技术可行性</div>
+      </div>
+      <div class="verdict warn">⚠️ 有保留</div>
+    </div>
+    <div class="review-body">你说"问题发现从周级别变成天级别"——我算了一下你的白痴指数：你每天自动生成一条200字摘要，花多少算力？几乎没有。但这条摘要解决了什么？如果leader每天看完摘要之后什么都没做，那"天级别"发现问题和"周级别"发现问题没有本质区别。<br><br>关键不是多快发现问题，是发现问题之后<strong>能不能立刻行动</strong>。你的方案里有"阻塞项"这个字段——如果leader看到阻塞项之后能一键分配资源解决，那才是真正的价值。否则你只是把"看周报的30秒"分成了7个"看摘要的5秒"。</div>
+    <blockquote class="advice"><strong>Musk 金句：</strong>发现得快不等于解决得快，别只做半截。</blockquote>
+  </div>
+
+  <!-- Naval -->
+  <div class="card reviewer-card">
+    <div class="reviewer-header">
+      <div class="r-avatar n">N</div>
+      <div class="r-info">
+        <div class="r-name">Naval Ravikant</div>
+        <div class="r-title">杠杆思维 · 可扩展性视角</div>
+        <div class="r-dim">维度：可扩展性</div>
+      </div>
+      <div class="verdict pass">✅ 通过</div>
+    </div>
+    <div class="review-body">杠杆很好。leader自己就是受益者，不需要说服谁——这是最好的启动方式。但我要追问一下扩展路径：现在只接Jira，以后呢？如果你把Git提交记录也接进来，就能自动看到每个开发者的工作产出。再把文档平台的协作记录接进来，就能看到跨团队的协作关系。<br><br>想象一下：三个月后，你的工具覆盖了DT全部5个内部工具。那时候它就不只是"每日摘要"了——它是整个DT的<strong>组织神经系统</strong>。数据越积越多，越积越准，别人想追都追不上。</div>
+    <blockquote class="advice"><strong>Naval 金句：</strong>今天接Jira，明天接一切。</blockquote>
+  </div>
+
+  <!-- Karpathy -->
+  <div class="card reviewer-card">
+    <div class="reviewer-header">
+      <div class="r-avatar k">K</div>
+      <div class="r-info">
+        <div class="r-name">Andrej Karpathy</div>
+        <div class="r-title">AI 布道师 · AI适配度视角</div>
+        <div class="r-dim">维度：AI适配度</div>
+      </div>
+      <div class="verdict warn">✅ 有保留</div>
+    </div>
+    <div class="review-body">数据飞轮给8/10——确实有，接入的工具越多汇总越准。但"可行性"我只给6/10。你提到"数据隐私"是风险，但没说怎么解决。<br><br>技术路线上建议用"聚合特征"而非"原始数据"——比如不展示"张三昨天关了3个Jira ticket"，而是展示"团队昨天完成15个任务，较上周+20%"。这样既保护个人隐私，又保留了团队级别的信号。另外，March of Nines——你的摘要准确率能从90%→99%→99.9%吗？每提升一个9，需要的工程量是完全不同的。</div>
+    <blockquote class="advice"><strong>Karpathy 金句：</strong>用聚合数据保护隐私，别拿原始数据赌信任。</blockquote>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="card summary">
+    <h3>综合裁定</h3>
+    <div class="verdict-bar">
+      <div class="verdict-pill warn">✅ Buffett · 有保留</div>
+      <div class="verdict-pill warn">⚠️ Musk · 有保留</div>
+      <div class="verdict-pill pass">✅ Naval · 通过</div>
+      <div class="verdict-pill warn">✅ Karpathy · 有保留</div>
+    </div>
+    <div class="section-title">T O P &nbsp; 3 &nbsp; 关 键 问 题</div>
+    <ol class="issues-list">
+      <li><div class="issue-num">1</div><div><strong>只做半截</strong>——发现问题后没有行动闭环（阻塞项一键升级），马斯克指出这是最大的缺陷</div></li>
+      <li><div class="issue-num">2</div><div><strong>数据隐私方案缺失</strong>——Karpathy建议用聚合数据替代原始数据，需要明确技术路线</div></li>
+      <li><div class="issue-num">3</div><div><strong>可迁移性存疑</strong>——巴菲特提醒架构需做数据源抽象，避免被单一工具（Jira）锁定</div></li>
+    </ol>
+    <div class="next-steps">
+      <h4>下一步行动建议</h4>
+      <ol>
+        <li>在MVP中增加"阻塞项一键升级"功能——让发现问题后能立刻行动</li>
+        <li>明确数据隐私方案：使用聚合数据（团队级统计）而非个人原始数据</li>
+        <li>架构设计数据源抽象层，为后续接入Git、文档平台等做准备</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  Powered by <span>AI 创新预审</span> &nbsp;·&nbsp; Innovation Toolkit &nbsp;·&nbsp; 2026-05-09
+</div>
+
+</body>
+</html>
