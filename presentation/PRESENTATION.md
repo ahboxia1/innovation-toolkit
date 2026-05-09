@@ -299,7 +299,7 @@ chmod +x install.sh && ./install.sh
 | [naval-skill](https://github.com/alchaincyf/naval-skill) | 开源Claude Code Skill | 纳瓦尔人格蒸馏（杠杆思维、无需许可原则等） |
 | [karpathy-skill](https://github.com/alchaincyf/karpathy-skill) | 开源Claude Code Skill | Karpathy人格蒸馏（数据飞轮、Software 3.0等） |
 | [花叔 / nuwa-skill](https://github.com/alchaincyf/nuwa-skill) (MIT) | 开源Claude Code Skill | 人物思维框架蒸馏，用于引导逻辑 |
-| [段永平](https://xueqiu.com/u/6199573275) | 雪球平台公开投资问答录 | 商业模式过滤器，转化为Hard Gate |
+| [段永平](https://xueqiu.com/u/1247347556) | 雪球平台公开投资问答录 | 商业模式过滤器，转化为Hard Gate |
 
 所有人格蒸馏均保留了原作者提炼的核心心智模型和表达风格，在本项目中被裁剪和重组以适配创新评审场景。
 

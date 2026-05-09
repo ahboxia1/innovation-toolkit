@@ -140,7 +140,7 @@ innovation-toolkit/
 | [naval-skill](https://github.com/alchaincyf/naval-skill) | 纳瓦尔人格蒸馏 | — |
 | [karpathy-skill](https://github.com/alchaincyf/karpathy-skill) | Karpathy人格蒸馏 | — |
 | [nuwa-skill](https://github.com/alchaincyf/nuwa-skill) by 花叔 | 人物思维框架蒸馏 | MIT |
-| [段永平雪球问答](https://xueqiu.com/u/6199573275) | 商业模式过滤器（Hard Gate） | — |
+| [段永平雪球](https://xueqiu.com/u/1247347556) | 商业模式过滤器（Hard Gate） | — |
 
 另融合龙湖集团内部评审标准：DT《AI季度探索项目立项与管理办法》、千丁《创新项目敏捷立项机制》及《蜂巢创新大赛设计方案》。
 
